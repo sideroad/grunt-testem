@@ -1,0 +1,45 @@
+{
+    "name": "grunt-testem",
+    "description": "A grunt plugin for testem.",
+    "version": "0.1.0",
+    "homepage": "https://github.com/sideroad/grunt-testem",
+    "author": {
+        "name": "sideroad",
+        "email": "sideroad.jp@gmail.com",
+        "url": "http://sideroad.secret.jp/"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git://github.com/sideroad/grunt-grunt-testem.git"
+    },
+    "bugs": {
+        "url": "https://github.com/sideroad/grunt-testem/issues"
+    },
+    "licenses": [
+        {
+            "type": "MIT",
+            "url": "http://opensource.org/licenses/mit-license.php"
+        },
+        {
+            "type": "GPL",
+            "url": "http://opensource.org/licenses/gpl-3.0.html"
+        }
+    ],
+    "main": "grunt.js",
+    "bin": "bin/grunt-testem",
+    "engines": {
+        "node": "*"
+    },
+    "scripts": {
+        "test": "grunt testem"
+    },
+    "dependencies": {
+        "grunt": "~0.3.8"
+    },
+    "devDependencies": {
+        "grunt": "~0.3.8"
+    },
+    "keywords": [
+        "gruntplugin"
+    ]
+}

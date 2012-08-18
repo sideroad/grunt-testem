@@ -1,17 +1,23 @@
-grunt-tasks
-===========
+# grunt-testem
 
-Install
-Download grunt-tasks and add path of load task into grunt.js.
-```javascript
-grunt.loadTasks('path/to/grunt-tasks');
+A [grunt](https://github.com/cowboy/grunt) plugin for executing [testem](https://github.com/airportyh/testem)
+
+## Getting Started
+
+Install the module:
+
+```bash
+npm install grunt-testem
 ```
 
-testem
-------
+Then add this line to your project’s `grunt.js` gruntfile:
 
+```js
+grunt.loadNpmTasks('grunt-testem');
+```
 
-### All browsers test
+Now you can execute testem. Here’s a basic example:
+
 ```javascript
 grunt.initConfig({
   testem : {
@@ -20,7 +26,7 @@ grunt.initConfig({
 });
 ```
 
-### Selecting specific browsers
+## Selecting specific browsers
 ```javascript
 grunt.initConfig({
   testem : {
