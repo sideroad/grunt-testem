@@ -20,7 +20,7 @@ grunt.initConfig({
 });
 ```
 
-### Browser selected
+### Selecting specific browsers
 ```javascript
 grunt.initConfig({
   testem : {

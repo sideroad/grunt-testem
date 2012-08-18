@@ -20,7 +20,7 @@ module.exports = function(grunt) {
         var tests = +(stdout.match(/\n# tests\s+(\d+)/)||[0])[1],
           pass = +(stdout.match(/\n# pass\s+(\d+)/)||[0])[1],
           fail = +(stdout.match(/\n# fail\s+(\d+)/)||[0])[1],
-          not = (stdout.match(/\nnot ([^\n]+)/g)||['']).join('');
+          not = (stdout.match(/\nnot ok \d+ - [^\n]+/g)||['']).join('');
         
         if( tests != pass ||
             fail ||
@@ -30,7 +30,7 @@ module.exports = function(grunt) {
           grunt.log.error(''+fail+'/'+tests+' assertions failed');
           done(false);
         } else {  
-          grunt.log.writeln(''+tests+' assertions passed');
+          grunt.log.ok(''+tests+' assertions passed');
           done(true);
         }
     });
