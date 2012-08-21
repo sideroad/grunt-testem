@@ -48,7 +48,7 @@ module.exports = function(grunt) {
           pass = memo.pass,
           fail = memo.fail,
           not = memo.not.join('');
-          
+        fs.unlinkSync('testem.json');
         if( tests != pass ||
             fail ||
             not ||
