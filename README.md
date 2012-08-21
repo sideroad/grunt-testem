@@ -30,7 +30,14 @@ grunt.initConfig({
 ```javascript
 grunt.initConfig({
   testem : {
-    ci : ['chrome','safari']
+    browsers : [
+      'chrome',
+      'safari'
+    ],
+    files : [
+      'path/to/test.html',
+      'path/to/test.html'
+    ]
   }
 });
 ```

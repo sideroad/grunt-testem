@@ -9,23 +9,50 @@
 
 module.exports = function(grunt) {
 
-  var exec = require('child_process').exec;
+  var exec = require('child_process').exec,
+      async = require('async'),
+      fs = require('fs');
   
-  grunt.registerMultiTask( 'testem', 'Execute testem.', function() {
+  grunt.registerTask( 'testem', 'Execute testem.', function() {
     
     var done = this.async(),
-      browsers = (this.data.length) ? ' -b ' + this.data.join(',') : '';
+      browsers = grunt.config('testem.browsers')||[],
+      ci = (browsers.length) ? ' -b ' + browsers.join(',') : '';
+    
+    async.reduce(
+      grunt.config('testem.files'),
+      {
+        pass : 0,
+        fail : 0,
+        not : [],
+        tests : 0
+      },
+      function(memo, path, callback){
+        fs.writeFileSync('testem.json', '{"test_page":"'+path+'"}');
+          
+        exec( 'testem ci'+ci, {}, function( code, stdout, stderr ){
+          var pass = (stdout.match(/\nok \d+ - [^\n]+/g)||[]).length,
+            not = (stdout.match(/\nnot ok \d+ - [^\n]+/g)||[]),
+            fail = not.length,
+            tests = pass + fail;
+          memo.pass += pass;
+          memo.fail += fail;
+          memo.not = memo.not.concat(not);
+          memo.tests += tests;
 
-    exec( 'testem ci'+browsers, {}, function( code, stdout, stderr ){
-        var tests = +(stdout.match(/\n# tests\s+(\d+)/)||[0])[1],
-          pass = +(stdout.match(/\n# pass\s+(\d+)/)||[0])[1],
-          fail = +(stdout.match(/\n# fail\s+(\d+)/)||[0])[1],
-          not = (stdout.match(/\nnot ok \d+ - [^\n]+/g)||['']).join('');
-        
+          callback(null, memo);
+        });      
+      },
+      function(err, memo){
+        var tests = memo.tests,
+          pass = memo.pass,
+          fail = memo.fail,
+          not = memo.not.join('');
+          
         if( tests != pass ||
             fail ||
             not ||
-            stderr ) {
+            err ) {
           grunt.log.error(not);
           grunt.log.error(''+fail+'/'+tests+' assertions failed');
           done(false);
@@ -33,9 +60,10 @@ module.exports = function(grunt) {
           grunt.log.ok(''+tests+' assertions passed');
           done(true);
         }
-    });
+      }
+    )
+    
     grunt.log.writeln('Now testing...');
   });
-
 
 };
