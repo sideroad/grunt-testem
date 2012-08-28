@@ -6,7 +6,7 @@
   "author": "sideroad <sideroad.jp@gmail.com> (http://sideroad.secret.jp/)",
   "repository": {
     "type": "git",
-    "url": "git://github.com/sideroad/grunt-grunt-testem.git"
+    "url": "git://github.com/sideroad/grunt-testem.git"
   },
   "bugs": {
     "url": "https://github.com/sideroad/grunt-testem/issues"
@@ -40,6 +40,6 @@
     "async" : "~0.1.22"
   },
   "keywords": [
-    "gruntplugin"
+    "gruntplugin","grunt","grunt","testem"
   ]
 }
