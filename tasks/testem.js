@@ -29,7 +29,7 @@ module.exports = function(grunt) {
       },
       function(memo, path, callback){
         fs.writeFileSync('testem.json', '{"test_page":"'+path+'"}');
-          
+        grunt.log.writeln( 'testem ci'+ci );
         exec( 'testem ci'+ci, {}, function( code, stdout, stderr ){
           var pass = (stdout.match(/\nok \d+ - [^\n]+/g)||[]).length,
             not = (stdout.match(/\nnot ok \d+ - [^\n]+/g)||[]),

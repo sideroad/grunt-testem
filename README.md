@@ -21,7 +21,9 @@ Now you can execute testem. Here’s a basic example:
 ```javascript
 grunt.initConfig({
   testem : {
-    ci : []
+    files : [
+      'path/to/test.html'
+    ]
   }
 });
 ```
