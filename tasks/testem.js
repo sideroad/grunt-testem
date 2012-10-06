@@ -17,7 +17,7 @@ module.exports = function(grunt) {
     
     var done = this.async(),
       browsers = grunt.config('testem.browsers')||[],
-      ci = (browsers.length) ? ' -b ' + browsers.join(',') : '';
+      ci = (browsers.length) ? ' -l ' + browsers.join(',') : '';
     
     async.reduce(
       grunt.config('testem.files'),

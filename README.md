@@ -7,9 +7,12 @@ A [grunt](https://github.com/cowboy/grunt) plugin for executing [testem](https:/
 Install the module:
 
 ```bash
+npm install -g testem
+npm install -g grunt
 npm install grunt-testem
 ```
 
+You need to install testem more than 0.2.2 version.
 Then add this line to your project’s `grunt.js` gruntfile:
 
 ```js
