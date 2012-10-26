@@ -2,8 +2,17 @@ module.exports = function(grunt) {
 
   grunt.initConfig({
     'testem': {
-      files : [
+      files: [
         'path/to/test.html'
+      ],
+      routes: [
+        '/path': 'path/to/files'
+      ],
+      browsers: [
+        'chrome'
+      ],
+      src_files: [
+        'app/templates/**/*.tmpl'
       ]
     }
   });
