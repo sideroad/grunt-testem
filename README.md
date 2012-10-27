@@ -24,9 +24,11 @@ Now you can execute testem. Here’s a basic example:
 ```javascript
 grunt.initConfig({
   testem : {
-    files : [
-      'path/to/test.html'
-    ]
+    main :{
+      files : [
+        'path/to/test.html'
+      ]
+    }
   }
 });
 ```
@@ -35,14 +37,16 @@ grunt.initConfig({
 ```javascript
 grunt.initConfig({
   testem : {
-    browsers : [
-      'chrome',
-      'safari'
-    ],
-    files : [
-      'path/to/test.html',
-      'path/to/test.html'
-    ]
+    main : {
+      browsers : [
+        'chrome',
+        'safari'
+      ],
+      files : [
+        'path/to/test.html',
+        'path/to/test.html'
+      ]
+    }
   }
 });
 ```
