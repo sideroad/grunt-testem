@@ -19,9 +19,12 @@ module.exports = function(grunt) {
       browsers = grunt.config('testem.browsers')||[],
       ci = (browsers.length) ? ' -l ' + browsers.join(',') : '';
     
+    grunt.log.writeln('Now testing...');
+
     async.reduce(
       grunt.config('testem.files'),
       {
+        ok: [],
         pass : 0,
         fail : 0,
         not : [],
@@ -31,17 +34,24 @@ module.exports = function(grunt) {
         fs.writeFileSync('testem.json', '{"test_page":"'+path+'"}');
         grunt.log.writeln( 'testem ci'+ci );
         exec( 'testem ci'+ci, {}, function( code, stdout, stderr ){
-          var pass = (stdout.match(/\nok \d+ - [^\n]+/g)||[]).length,
+          var ok = (stdout.match(/\nok \d+ - [^\n]+/g)||[]),
+            pass = ok.length,
             not = (stdout.match(/\nnot ok \d+ - [^\n]+/g)||[]),
-            fail = not.length,
-            tests = pass + fail;
+            fail = not.length;
+
+          if(not.length) {
+            not.unshift(path);
+          }
+
+
+          memo.ok = memo.ok.concat(ok);
           memo.pass += pass;
           memo.fail += fail;
           memo.not = memo.not.concat(not);
-          memo.tests += tests;
+          memo.tests += pass+fail;
 
           callback(null, memo);
-        });      
+        });
       },
       function(err, memo){
         var tests = memo.tests,
@@ -56,14 +66,13 @@ module.exports = function(grunt) {
           grunt.log.error(not);
           grunt.log.error(''+fail+'/'+tests+' assertions failed');
           done(false);
-        } else {  
+        } else {
           grunt.log.ok(''+tests+' assertions passed');
           done(true);
         }
       }
-    )
+    );
     
-    grunt.log.writeln('Now testing...');
   });
 
 };
