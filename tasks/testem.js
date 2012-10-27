@@ -18,12 +18,13 @@ module.exports = function(grunt) {
     var done = this.async(),
       that = this,
       browsers = this.data.browsers||[],
-      ci = (browsers.length) ? ' -l ' + browsers.join(',') : '';
+      ci = (browsers.length) ? ' -l ' + browsers.join(',') : '',
+      files = this.data.files || [];
 
-    
     grunt.log.writeln('Now testing...');
+    delete this.data.files;
     async.reduce(
-      that.data.files,
+      files,
       {
         ok: [],
         pass : 0,
