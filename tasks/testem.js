@@ -13,14 +13,14 @@ module.exports = function(grunt) {
       async = require('async'),
       fs = require('fs');
   
-  grunt.registerTask( 'testem', 'Execute testem.', function() {
-    
+  grunt.registerMultiTask( 'testem', 'Execute testem.', function() {
     var done = this.async(),
-      browsers = grunt.config('testem.browsers')||[],
+      that = this,
+      browsers = this.data.browsers||[],
       ci = (browsers.length) ? ' -l ' + browsers.join(',') : '';
-    
+
     async.reduce(
-      grunt.config('testem.files'),
+      that.data.files,
       {
         pass : 0,
         fail : 0,
@@ -28,9 +28,9 @@ module.exports = function(grunt) {
         tests : 0
       },
       function(memo, path, callback){
-        fs.writeFileSync('testem.json', '{"test_page":"'+path+'"}');
-        grunt.log.writeln( 'testem ci'+ci );
-        exec( 'testem ci'+ci, {}, function( code, stdout, stderr ){
+        that.data['test_page'] = path;
+        fs.writeFileSync('testem.json', JSON.stringify(that.data));
+        exec('testem ci'+ci, {}, function( code, stdout, stderr ){
           var pass = (stdout.match(/\nok \d+ - [^\n]+/g)||[]).length,
             not = (stdout.match(/\nnot ok \d+ - [^\n]+/g)||[]),
             fail = not.length,
