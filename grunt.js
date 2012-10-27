@@ -8,13 +8,13 @@ module.exports = function(grunt) {
           'safari'
         ],
         files: [
-          'path/to/test.html'
+          'examples/1.html',
+          'examples/2.html'
         ],
         routes: {
-          '/path': 'path/to/files'
+          '/lib': 'examples/lib'
         },
         src_files: [
-          'app/templates/**/*.tmpl'
         ]
       }
     }

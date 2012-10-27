@@ -11,6 +11,7 @@ module.exports = function(grunt) {
 
   var exec = require('child_process').exec,
       async = require('async'),
+      _ = require('underscore'),
       fs = require('fs');
   
   grunt.registerMultiTask( 'testem', 'Execute testem.', function() {
@@ -34,15 +35,19 @@ module.exports = function(grunt) {
         that.data['test_page'] = path;
         fs.writeFileSync('testem.json', JSON.stringify(that.data));
         exec('testem ci'+ci, {}, function( code, stdout, stderr ){
-          var ok = (stdout.match(/\nok \d+ - [^\n]+/g)||[]),
+          var result = _.chain(stdout.split('\n')),
+            ok = result.map(function( item ){
+              return (/^ok \d+ - [^\n]+/.test(item)) ? item : false;
+            }).compact().value(),
             pass = ok.length,
-            not = (stdout.match(/\nnot ok \d+ - [^\n]+/g)||[]),
+            not = result.map(function( item ){
+              return (/^not ok \d+ - [^\n]+/.test(item)) ? item : false;
+            }).compact().value(),
             fail = not.length;
 
           if(not.length) {
             not.unshift(path);
           }
-
 
           memo.ok = memo.ok.concat(ok);
           memo.pass += pass;
@@ -57,7 +62,7 @@ module.exports = function(grunt) {
         var tests = memo.tests,
           pass = memo.pass,
           fail = memo.fail,
-          not = memo.not.join('');
+          not = memo.not.join('\n');
         fs.unlinkSync('testem.json');
         if( tests != pass ||
             fail ||

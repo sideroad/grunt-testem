@@ -26,7 +26,8 @@ grunt.initConfig({
   testem : {
     main :{
       files : [
-        'path/to/test.html'
+        'examples/1.html',
+        'examples/2.html'
       ]
     }
   }
@@ -43,8 +44,8 @@ grunt.initConfig({
         'safari'
       ],
       files : [
-        'path/to/test.html',
-        'path/to/test.html'
+        'examples/1.html',
+        'examples/2.html'
       ]
     }
   }
