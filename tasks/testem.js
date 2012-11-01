@@ -17,12 +17,11 @@ module.exports = function(grunt) {
   grunt.registerMultiTask( 'testem', 'Execute testem.', function() {
     var done = this.async(),
       that = this,
-      browsers = this.data.browsers||[],
+      browsers = this.data.launch_in_dev||[],
       ci = (browsers.length) ? ' -l ' + browsers.join(',') : '',
       files = this.data.files || [];
 
     grunt.log.writeln('Now testing...');
-    delete this.data.files;
     async.reduce(
       files,
       {
@@ -64,7 +63,6 @@ module.exports = function(grunt) {
           pass = memo.pass,
           fail = memo.fail,
           not = memo.not.join('\n');
-        fs.unlinkSync('testem.json');
         if( tests != pass ||
             fail ||
             not ||
