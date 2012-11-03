@@ -1,12 +1,14 @@
 module.exports = function(grunt) {
+  "use strict";
 
   grunt.initConfig({
     'testem': {
       main : {
-        launch_in_dev : [
+        launch_in_ci : [
           'chrome',
           'safari'
         ],
+        tap : "tests.tap",
         files: [
           'examples/1.html',
           'examples/2.html'

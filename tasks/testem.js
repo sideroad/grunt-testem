@@ -8,6 +8,7 @@
  */
 
 module.exports = function(grunt) {
+  "use strict";
 
   var exec = require('child_process').exec,
       async = require('async'),
@@ -17,25 +18,32 @@ module.exports = function(grunt) {
   grunt.registerMultiTask( 'testem', 'Execute testem.', function() {
     var done = this.async(),
       that = this,
-      browsers = this.data.launch_in_dev||[],
-      ci = (browsers.length) ? ' -l ' + browsers.join(',') : '',
-      files = this.data.files || [];
+      files = this.data.files || [],
+      tap = this.data.tap;
 
     grunt.log.writeln('Now testing...');
     async.reduce(
       files,
       {
+        test: [],
         ok: [],
         pass : 0,
         fail : 0,
         not : [],
-        tests : 0
+        tests : 0,
+        version : ""
       },
       function(memo, path, callback){
         that.data['test_page'] = path;
         fs.writeFileSync('testem.json', JSON.stringify(that.data));
-        exec('testem ci'+ci, {}, function( code, stdout, stderr ){
+        exec('testem ci', {}, function( code, stdout, stderr ){
           var result = _.chain(stdout.split('\n')),
+            tests = memo.tests,
+            test = result.map(function( item ){
+              var reg = /^(ok|not ok) (\d+) - ([^\n]+)/,
+                  match = item.match(reg);
+              return (reg.test(item)) ? match[1]+" "+(Number( match[2] )+tests)+" - "+path+" - "+match[3] : false;
+            }).compact().value(),
             ok = result.map(function( item ){
               return (/^ok \d+ - [^\n]+/.test(item)) ? item : false;
             }).compact().value(),
@@ -49,11 +57,15 @@ module.exports = function(grunt) {
             not.unshift(path);
           }
 
+          memo.version = result.find(function(item){
+            return /^TAP version (\d+)/i.test(item);
+          }).value();
           memo.ok = memo.ok.concat(ok);
           memo.pass += pass;
           memo.fail += fail;
           memo.not = memo.not.concat(not);
           memo.tests += pass+fail;
+          memo.test = memo.test.concat(test);
 
           callback(null, memo);
         });
@@ -62,7 +74,16 @@ module.exports = function(grunt) {
         var tests = memo.tests,
           pass = memo.pass,
           fail = memo.fail,
-          not = memo.not.join('\n');
+          not = memo.not.join('\n'),
+          test = memo.test;
+
+        if(tap){
+          test.unshift(memo.version);
+          test.push('# tests '+ tests );
+          test.push('# pass '+ pass );
+          test.push('# fail '+ fail );
+          fs.writeFileSync(tap, test.join('\n'), 'utf-8');
+        }
         if( tests != pass ||
             fail ||
             not ||
