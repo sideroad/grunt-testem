@@ -3,7 +3,7 @@ module.exports = function(grunt) {
   grunt.initConfig({
     'testem': {
       main : {
-        browsers : [
+        launch_in_dev : [
           'chrome',
           'safari'
         ],
