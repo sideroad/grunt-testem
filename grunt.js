@@ -5,7 +5,8 @@ module.exports = function(grunt) {
     'testem': {
       main : {
         launch_in_ci : [
-          'chrome'
+          'firefox',
+          'safari'
         ],
         json: 'testem-multi.json',
         tap : "tests.tap"

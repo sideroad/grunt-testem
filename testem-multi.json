@@ -1,6 +1,5 @@
 {
   "launch_in_ci": [
-    "chrome",
     "safari"
   ],
   "files": [

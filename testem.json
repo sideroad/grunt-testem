@@ -1,1 +1,1 @@
-{"launch_in_ci":["chrome"],"routes":{"/lib":"examples/lib"},"src_files":[],"test_page":"examples/2.html"}
+{"launch_in_ci":["firefox","safari"],"routes":{"/lib":"examples/lib"},"src_files":[],"test_page":"examples/2.html"}
