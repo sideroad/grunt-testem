@@ -39,7 +39,7 @@ grunt.initConfig({
 grunt.initConfig({
   testem : {
     main : {
-      browsers : [
+      launch_in_ci : [
         'chrome',
         'safari'
       ],

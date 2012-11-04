@@ -1,6 +1,8 @@
 TAP version 13
 not ok 1 - examples/1.html - Chrome "undefined"
 not ok 2 - examples/2.html - Chrome "undefined"
+
+1..2
 # tests 2
 # pass 0
 # fail 2
