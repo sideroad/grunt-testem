@@ -18,8 +18,18 @@ module.exports = function(grunt) {
   grunt.registerMultiTask( 'testem', 'Execute testem.', function() {
     var done = this.async(),
       that = this,
-      files = this.data.files || [],
-      tap = this.data.tap;
+      data = this.data,
+      files,
+      tap;
+
+    if(data.json){
+      data = _.extend({}, JSON.parse( fs.readFileSync(data.json, 'utf-8').replace(/\n/,'')), data);
+    }
+    files = data.files || [];
+    tap = data.tap;
+    delete data.files;
+    delete data.tap;
+    delete data.json;
 
     grunt.log.writeln('Now testing...');
     async.reduce(

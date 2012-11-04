@@ -1,0 +1,15 @@
+{
+  "launch_in_ci": [
+    "chrome",
+    "safari"
+  ],
+  "files": [
+    "examples/1.html",
+    "examples/2.html"
+  ],
+  "routes": {
+    "/lib": "examples/lib"
+  },
+  "src_files": [
+  ]
+}

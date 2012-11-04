@@ -5,19 +5,10 @@ module.exports = function(grunt) {
     'testem': {
       main : {
         launch_in_ci : [
-          'chrome',
-          'safari'
+          'chrome'
         ],
-        tap : "tests.tap",
-        files: [
-          'examples/1.html',
-          'examples/2.html'
-        ],
-        routes: {
-          '/lib': 'examples/lib'
-        },
-        src_files: [
-        ]
+        json: 'testem-multi.json',
+        tap : "tests.tap"
       }
     }
   });

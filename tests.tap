@@ -1,20 +1,6 @@
 TAP version 13
-ok 1 - examples/1.html - Chrome test module: hello test
-not ok 2 - examples/1.html - Chrome test module: fail test
-ok 3 - examples/1.html - Chrome test module2: hello test
-not ok 4 - examples/1.html - Chrome test module2: fail test
-ok 5 - examples/1.html - Safari test module: hello test
-not ok 6 - examples/1.html - Safari test module: fail test
-ok 7 - examples/1.html - Safari test module2: hello test
-not ok 8 - examples/1.html - Safari test module2: fail test
-ok 9 - examples/2.html - Chrome test module: hello test
-not ok 10 - examples/2.html - Chrome test module: fail test
-ok 11 - examples/2.html - Chrome test module2: hello test
-not ok 12 - examples/2.html - Chrome test module2: fail test
-ok 13 - examples/2.html - Safari test module: hello test
-not ok 14 - examples/2.html - Safari test module: fail test
-ok 15 - examples/2.html - Safari test module2: hello test
-not ok 16 - examples/2.html - Safari test module2: fail test
-# tests 16
-# pass 8
-# fail 8
+not ok 1 - examples/1.html - Chrome "undefined"
+not ok 2 - examples/2.html - Chrome "undefined"
+# tests 2
+# pass 0
+# fail 2
