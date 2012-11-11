@@ -3,8 +3,7 @@
     "safari"
   ],
   "files": [
-    "examples/1.html",
-    "examples/2.html"
+    "*/*.html"
   ],
   "routes": {
     "/lib": "examples/lib"

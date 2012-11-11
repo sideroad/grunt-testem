@@ -26,8 +26,9 @@ module.exports = function(grunt) {
       data = _.extend({}, JSON.parse( fs.readFileSync(data.json, 'utf-8').replace(/\n/,'')), data);
     }
     tap = data.tap;
-    delete data.tap;
-    delete data.json;
+    data.tap = null;
+    data.json = null;
+    data.files = grunt.file.expandFiles(data.files);
 
     grunt.log.writeln('Now testing...');
     testemMulti.exec(data, function( results ){
