@@ -31,20 +31,11 @@ module.exports = function(grunt) {
     data.files = grunt.file.expandFiles(data.files);
 
     grunt.log.writeln('Now testing...');
-    testemMulti.exec(data, function( results ){
-      var result = _.chain(results.split('\n')),
-          test = result.map(function( item ){
-            return (/^(ok|not ok) (\d+) - ([^\n]+)/.test(item)) ? item : false;
-          }).compact().value(),
-          tests = test.length,
-          ok = result.map(function( item ){
-            return (/^ok \d+ - [^\n]+/.test(item)) ? item : false;
-          }).compact().value(),
-          pass = ok.length,
-          not = result.map(function( item ){
-            return (/^not ok \d+ - [^\n]+/.test(item)) ? item : false;
-          }).compact().value(),
-          fail = not.length;
+    testemMulti.exec(data, function( results, memo ){
+      var tests = memo.tests,
+          pass = memo.pass,
+          not = memo.not,
+          fail = memo.fail;
 
       if(tap){
         fs.writeFileSync(tap, results, 'utf-8');
