@@ -31,7 +31,11 @@ module.exports = function(grunt) {
     data.files = grunt.file.expandFiles(data.files);
 
     grunt.log.writeln('Now testing...');
-    testemMulti.exec(data, function( results, memo ){
+    testemMulti.exec(data);
+    testemMulti.on('data', function( data ){
+      grunt.verbose.ok(''+data);
+    });
+    testemMulti.on('exit', function( results, memo ){
       var tests = memo.tests,
           pass = memo.pass,
           not = memo.not,

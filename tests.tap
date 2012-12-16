@@ -2,42 +2,42 @@ TAP version 13
 ok 1 - examples/1.html - Firefox test module: hello test
 not ok 2 - examples/1.html - Firefox test module: fail test
   ---
-    message: Will failed!
+    message: "Will failed!"
   ...
 ok 3 - examples/1.html - Firefox test module2: hello test
 not ok 4 - examples/1.html - Firefox test module2: fail test
   ---
-    message: Will failed!
+    message: "Will failed!"
   ...
 ok 5 - examples/1.html - Safari test module: hello test
 not ok 6 - examples/1.html - Safari test module: fail test
   ---
-    message: Will failed!
+    message: "Will failed!"
   ...
 ok 7 - examples/1.html - Safari test module2: hello test
 not ok 8 - examples/1.html - Safari test module2: fail test
   ---
-    message: Will failed!
+    message: "Will failed!"
   ...
 ok 9 - examples/2.html - Firefox test module: hello test
 not ok 10 - examples/2.html - Firefox test module: fail test
   ---
-    message: Will failed!
+    message: "Will failed!"
   ...
 ok 11 - examples/2.html - Firefox test module2: hello test
 not ok 12 - examples/2.html - Firefox test module2: fail test
   ---
-    message: Will failed!
+    message: "Will failed!"
   ...
 ok 13 - examples/2.html - Safari test module: hello test
 not ok 14 - examples/2.html - Safari test module: fail test
   ---
-    message: Will failed!
+    message: "Will failed!"
   ...
 ok 15 - examples/2.html - Safari test module2: hello test
 not ok 16 - examples/2.html - Safari test module2: fail test
   ---
-    message: Will failed!
+    message: "Will failed!"
   ...
 
 1..16
