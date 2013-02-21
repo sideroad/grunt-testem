@@ -4,12 +4,14 @@ module.exports = function(grunt) {
   grunt.initConfig({
     'testem': {
       main : {
-        launch_in_ci : [
-          'firefox',
-          'safari'
-        ],
-        json: 'testem-multi.json',
-        tap : "tests.tap"
+        options : {
+          launch_in_ci : [
+            'firefox',
+            'safari'
+          ],
+          json: 'testem-multi.json',
+          tap : "tests.tap"
+        }
       }
     }
   });

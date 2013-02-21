@@ -19,19 +19,17 @@ module.exports = function(grunt) {
   grunt.registerMultiTask( 'testem', 'Execute testem.', function() {
     var done = this.async(),
       that = this,
-      data = this.data,
+      options = this.options(),
       tap;
 
-    if(data.json){
-      data = _.extend({}, JSON.parse( fs.readFileSync(data.json, 'utf-8').replace(/\n/,'')), data);
+    if(options.json){
+      options = _.extend({}, JSON.parse( fs.readFileSync(options.json, 'utf-8').replace(/\n/,'')), options);
     }
-    tap = data.tap;
-    data.tap = null;
-    data.json = null;
-    data.files = grunt.file.expand(data.files);
+    tap = options.tap;
+    options.files = grunt.file.expand(options.files);
 
     grunt.log.writeln('Now testing...');
-    testemMulti.exec(data);
+    testemMulti.exec(options);
     testemMulti.on('data', function( data ){
       grunt.verbose.write(''+data);
     });
