@@ -15,7 +15,7 @@ module.exports = function(grunt) {
       _ = require('underscore'),
       testemMulti = require('testem-multi'),
       fs = require('fs');
-  
+
   grunt.registerMultiTask( 'testem', 'Execute testem.', function() {
     var done = this.async(),
       that = this,
@@ -28,12 +28,12 @@ module.exports = function(grunt) {
     tap = data.tap;
     data.tap = null;
     data.json = null;
-    data.files = grunt.file.expandFiles(data.files);
+    data.files = grunt.file.expand(data.files);
 
     grunt.log.writeln('Now testing...');
     testemMulti.exec(data);
     testemMulti.on('data', function( data ){
-      grunt.verbose.ok(''+data);
+      grunt.verbose.write(''+data);
     });
     testemMulti.on('exit', function( results, memo ){
       var tests = memo.tests,
@@ -54,7 +54,7 @@ module.exports = function(grunt) {
         done(true);
       }
     });
-    
+
   });
 
 };
