@@ -34,15 +34,18 @@ grunt.initConfig({
 });
 ```
 
-## Selecting specific browsers
+## Options ( specified browsers and output TAP )
 ```javascript
 grunt.initConfig({
   testem : {
     main : {
-      launch_in_ci : [
-        'chrome',
-        'safari'
-      ],
+      options : {
+        launch_in_ci : [
+          'firefox',
+          'safari'
+        ],
+        tap : "tests.tap"
+      },
       files : [
         'examples/1.html',
         'examples/2.html'
@@ -51,3 +54,6 @@ grunt.initConfig({
   }
 });
 ```
+
+You cant specified options, if you want to other options of testem
+see also [testem](https://github.com/airportyh/testem)

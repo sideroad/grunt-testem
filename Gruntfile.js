@@ -9,9 +9,12 @@ module.exports = function(grunt) {
             'firefox',
             'safari'
           ],
-          json: 'testem-multi.json',
           tap : "tests.tap"
-        }
+        },
+        files : [
+          'examples/1.html',
+          'examples/2.html'
+        ]
       }
     }
   });
