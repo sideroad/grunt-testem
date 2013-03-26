@@ -3,18 +3,20 @@ module.exports = function(grunt) {
 
   grunt.initConfig({
     'testem': {
+      options : {
+        launch_in_ci : [
+          'firefox',
+          'safari'
+        ],
+        tap : "tests.tap"
+      },
       main : {
-        options : {
-          launch_in_ci : [
-            'firefox',
-            'safari'
-          ],
-          tap : "tests.tap"
-        },
-        files : [
-          'examples/1.html',
-          'examples/2.html'
-        ]
+        files : {
+          examples: [
+            'examples/1.html',
+            'examples/2.html'
+          ]
+        }
       }
     }
   });

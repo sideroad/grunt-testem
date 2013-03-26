@@ -10,8 +10,7 @@
 module.exports = function(grunt) {
   "use strict";
 
-  var exec = require('child_process').exec,
-      async = require('async'),
+  var async = require('async'),
       _ = require('underscore'),
       testemMulti = require('testem-multi'),
       fs = require('fs');
@@ -20,15 +19,28 @@ module.exports = function(grunt) {
     var done = this.async(),
       that = this,
       options = this.options(),
-      tap;
+      tap,
+      files = [];
 
     if(options.json){
       options = _.extend({}, JSON.parse( fs.readFileSync(options.json, 'utf-8').replace(/\n/,'')), options);
     }
     tap = options.tap;
-    options.files = grunt.file.expand(options.files);
-
     grunt.log.writeln('Now testing...');
+
+    this.files.forEach(function(f) {
+      files = files.concat( f.src.filter(function(filepath) {
+        // Warn on and remove invalid source files (if nonull was set).
+        if (!grunt.file.exists(filepath)) {
+          grunt.log.warn('Source file "' + filepath + '" not found.');
+          return false;
+        } else {
+          return true;
+        }
+      }));
+    });
+
+    options.files = files;
     testemMulti.exec(options);
     testemMulti.on('data', function( data ){
       grunt.verbose.write(''+data);
@@ -52,7 +64,6 @@ module.exports = function(grunt) {
         done(true);
       }
     });
-
   });
 
 };
