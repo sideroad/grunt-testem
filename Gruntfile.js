@@ -7,20 +7,42 @@ module.exports = function(grunt) {
         launch_in_ci : [
           'firefox',
           'safari'
-        ],
-        tap : "tests.tap"
+        ]
       },
-      main : {
+      success : {
         files : {
-          examples: [
-            'examples/1.html',
-            'examples/2.html'
+          'test/actual/success.tap': [
+            'test/source/success-*.html'
           ]
         }
+      },
+      failed: {
+        files : {
+          'test/actual/failed.tap': [
+            'test/source/failed-*.html'
+          ]
+        },
+        options: {
+          force: true
+        }
       }
+    },
+
+    clean: {
+      tests: ['test/actual/*']
+    },
+
+    // Unit tests.
+    nodeunit: {
+      tests: ['test/*_test.js']
     }
   });
+
   grunt.loadTasks('tasks');
-  grunt.registerTask('default', 'testem');
+  grunt.loadNpmTasks('grunt-contrib-clean');
+  grunt.loadNpmTasks('grunt-contrib-nodeunit');
+
+  grunt.registerTask('test', ['clean', 'testem', 'nodeunit']);
+  grunt.registerTask('default', ['testem']);
 
 };

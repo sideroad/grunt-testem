@@ -1,7 +1,7 @@
 {
   "name": "grunt-testem",
   "description": "A grunt plugin for testem.",
-  "version": "0.3.2",
+  "version": "0.3.3",
   "homepage": "https://github.com/sideroad/grunt-testem",
   "author": "sideroad <sideroad.jp@gmail.com> (http://sideroad.secret.jp/)",
   "repository": {
@@ -29,17 +29,20 @@
     "node": "*"
   },
   "scripts": {
-    "test": "grunt testem"
+    "test": "grunt test --verbose --force"
   },
   "dependencies": {
     "async" : "~0.1.22",
     "underscore" : "~1.4.2",
-    "testem-multi" : "~0.1.1"
+    "testem-multi" : "~0.1.2"
   },
   "devDependencies": {
     "async" : "~0.1.22",
     "underscore" : "~1.4.2",
-    "testem-multi" : "~0.1.1"
+    "testem-multi" : "~0.1.2",
+    "grunt-contrib-clean": "~0.4.0",
+    "grunt-contrib-nodeunit": "~0.1.2",
+    "grunt": "0.4.0"
   },
   "keywords": [
     "gruntplugin","grunt","grunt","testem"

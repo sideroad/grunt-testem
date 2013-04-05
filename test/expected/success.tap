@@ -1,0 +1,14 @@
+TAP version 13
+ok 1 - test/source/success-1.html - Firefox test module: hello test
+ok 2 - test/source/success-1.html - Firefox test module2: hello test
+ok 3 - test/source/success-1.html - Safari test module: hello test
+ok 4 - test/source/success-1.html - Safari test module2: hello test
+ok 5 - test/source/success-2.html - Firefox test module: hello test
+ok 6 - test/source/success-2.html - Firefox test module2: hello test
+ok 7 - test/source/success-2.html - Safari test module: hello test
+ok 8 - test/source/success-2.html - Safari test module2: hello test
+
+1..8
+# tests 8
+# pass 8
+# fail 0

@@ -8,8 +8,7 @@ This plugin requires Grunt `~0.4.0`
 If you haven't used [Grunt](http://gruntjs.com/) before, be sure to check out the [Getting Started](http://gruntjs.com/getting-started) guide, as it explains how to create a [Gruntfile](http://gruntjs.com/sample-gruntfile) as well as install and use Grunt plugins. Once you're familiar with that process, you may install this plugin with this command:
 
 ```shell
-npm install -g testem
-npm install -g grunt
+npm install -g testem grunt
 npm install grunt-testem
 ```
 
@@ -31,14 +30,12 @@ grunt.initConfig({
       launch_in_ci : [
         'firefox',
         'safari'
-      ],
-      tap : "tests.tap"
+      ]
     },
     main : {
       files : {
-        examples: [
-          'examples/1.html',
-          'examples/2.html'
+        'tests.tap': [
+          'examples/*.html'
         ]
       }
     }
@@ -47,15 +44,6 @@ grunt.initConfig({
 ```
 
 ### Options
-
-#### options.tap
-Type: `String`
-Default value: `undefined`
-
-TAP file path, if you want to output test result which file formatted TAP.
-
-#### other options
-You cant specified options, if you want to other options of testem
 see also [testem](https://github.com/airportyh/testem)
 
 
