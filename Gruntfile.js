@@ -5,8 +5,7 @@ module.exports = function(grunt) {
     'testem': {
       options : {
         launch_in_ci : [
-          'firefox',
-          'safari'
+          'PhantomJS'
         ]
       },
       success : {

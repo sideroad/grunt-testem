@@ -1,1 +1,1 @@
-{"launch_in_ci":["firefox","safari"],"force":true,"test_page":"test/source/failed-2.html"}
+{"launch_in_ci":["PhantomJS"],"force":true,"test_page":"test/source/failed-2.html"}
