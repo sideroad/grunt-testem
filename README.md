@@ -1,4 +1,4 @@
-# Grunt Testem
+# Grunt Testem[![Build Status](https://api.travis-ci.org/sideroad/grunt-testem.png?branch=master)](https://travis-ci.org/sideroad/grunt-testem)
 
 A [grunt](https://github.com/cowboy/grunt) plugin for executing [testem](https://github.com/airportyh/testem)
 
