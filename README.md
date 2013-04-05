@@ -1,59 +1,62 @@
-# grunt-testem
+# Grunt Testem
 
 A [grunt](https://github.com/cowboy/grunt) plugin for executing [testem](https://github.com/airportyh/testem)
 
 ## Getting Started
+This plugin requires Grunt `~0.4.0`
 
-Install the module:
+If you haven't used [Grunt](http://gruntjs.com/) before, be sure to check out the [Getting Started](http://gruntjs.com/getting-started) guide, as it explains how to create a [Gruntfile](http://gruntjs.com/sample-gruntfile) as well as install and use Grunt plugins. Once you're familiar with that process, you may install this plugin with this command:
 
-```bash
+```shell
 npm install -g testem
 npm install -g grunt
 npm install grunt-testem
 ```
 
-You need to install testem more than 0.2.2 version.
-Then add this line to your project’s `grunt.js` gruntfile:
+One the plugin has been installed, it may be enabled inside your Gruntfile with this line of JavaScript:
 
 ```js
 grunt.loadNpmTasks('grunt-testem');
 ```
 
-Now you can execute testem. Here’s a basic example:
+## The "testem" task
 
-```javascript
-grunt.initConfig({
-  testem : {
-    main :{
-      files : [
-        'examples/1.html',
-        'examples/2.html'
-      ]
-    }
-  }
-});
-```
+### Overview
+In your project's Gruntfile, add a section named `testem` to the data object passed into `grunt.initConfig()`.
 
-## Options ( specified browsers and output TAP )
-```javascript
+```js
 grunt.initConfig({
-  testem : {
+  'testem': {
+    options : {
+      launch_in_ci : [
+        'firefox',
+        'safari'
+      ],
+      tap : "tests.tap"
+    },
     main : {
-      options : {
-        launch_in_ci : [
-          'firefox',
-          'safari'
-        ],
-        tap : "tests.tap"
-      },
-      files : [
-        'examples/1.html',
-        'examples/2.html'
-      ]
+      files : {
+        examples: [
+          'examples/1.html',
+          'examples/2.html'
+        ]
+      }
     }
   }
 });
 ```
 
+### Options
+
+#### options.tap
+Type: `String`
+Default value: `undefined`
+
+TAP file path, if you want to output test result which file formatted TAP.
+
+#### other options
 You cant specified options, if you want to other options of testem
 see also [testem](https://github.com/airportyh/testem)
+
+
+
