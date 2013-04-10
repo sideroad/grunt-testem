@@ -38,8 +38,20 @@ module.exports = function(grunt) {
           testemMulti = require('testem-multi');
 
       options.files = files;
+
       testemMulti.exec(options);
+
       testemMulti.on('data', function( data ){
+        var matches={};
+        data = ''+data;
+        matches.path = data.match(/^# Executing (.+)$/);
+        matches.fail = data.match(/^not ok (.+)/);
+        if(matches.path){
+          grunt.log.writeln(matches.path[0]);
+        }
+        if(matches.fail){
+          grunt.log.error(matches.fail[0]);
+        }
         grunt.verbose.write(''+data);
       });
       testemMulti.on('exit', function( results, memo ){
@@ -53,7 +65,6 @@ module.exports = function(grunt) {
         }
         if( tests != pass ||
             fail ) {
-          grunt.log.error(not.join('\n'));
           grunt.log.error(''+fail+'/'+tests+' assertions failed');
           done(options.force || false);
         } else {
