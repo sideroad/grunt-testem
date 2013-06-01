@@ -39,7 +39,10 @@
   "devDependencies": {
     "grunt-contrib-clean": "~0.4.0",
     "grunt-contrib-nodeunit": "~0.1.2",
-    "grunt": "0.4.0"
+    "grunt": "~0.4.0"
+  },
+  "peerDependencies": {
+    "grunt": "~0.4.0"
   },
   "keywords": [
     "gruntplugin","grunt","grunt","testem"
