@@ -46,5 +46,24 @@ grunt.initConfig({
 ### Options
 see also [testem](https://github.com/airportyh/testem)
 
-
-
+### Advanced
+If you want to use existing testem.json, please set configure below
+```js
+grunt.initConfig({
+  'testem': {
+    options : {
+      launch_in_ci : [
+        'firefox',
+        'safari'
+      ]
+    },
+    main : {
+      files : {
+        'tests.tap': [
+          'testem.json'
+        ]
+      }
+    }
+  }
+});
+```

@@ -24,6 +24,13 @@ module.exports = function(grunt) {
         options: {
           force: true
         }
+      },
+      json: {
+        files : {
+          'test/actual/json.tap': [
+            'test/source/testem.json'
+          ]
+        }
       }
     },
 

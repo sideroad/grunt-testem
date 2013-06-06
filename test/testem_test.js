@@ -24,5 +24,15 @@ exports.testem = {
     test.equal(actual, expected, 'should output tap of failed case.');
 
     test.done();
+  },
+  json: function(test){
+    test.expect(1);
+
+    var actual = getNormalizedFile('test/actual/json.tap');
+    var expected = getNormalizedFile('test/expected/json.tap');
+    test.equal(actual, expected, 'should output tap of success case.');
+
+    test.done();
+
   }
 };

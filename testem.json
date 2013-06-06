@@ -1,1 +1,1 @@
-{"launch_in_ci":["PhantomJS"],"force":true,"test_page":"test/source/failed-2.html"}
+{"launch_in_ci":["PhantomJS"],"test_page":"test/source/testem.json"}
