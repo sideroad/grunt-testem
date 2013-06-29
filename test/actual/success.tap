@@ -1,8 +1,7 @@
-TAP version 13
-ok 1 - test/source/success-1.html - PhantomJS test module: hello test
-ok 2 - test/source/success-1.html - PhantomJS test module2: hello test
-ok 3 - test/source/success-2.html - PhantomJS test module: hello test
-ok 4 - test/source/success-2.html - PhantomJS test module2: hello test
+ok 1 - test/source/success-1.html -  PhantomJS 1.7 - test module: hello test
+ok 2 - test/source/success-1.html -  PhantomJS 1.7 - test module2: hello test
+ok 3 - test/source/success-2.html -  PhantomJS 1.7 - test module: hello test
+ok 4 - test/source/success-2.html -  PhantomJS 1.7 - test module2: hello test
 
 1..4
 # tests 4

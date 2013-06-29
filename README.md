@@ -1,6 +1,6 @@
 # grunt-testem[![Build Status](https://api.travis-ci.org/sideroad/grunt-testem.png?branch=master)](https://travis-ci.org/sideroad/grunt-testem)
 
->Execute [testem](https://github.com/airportyh/testem) with [Continuous Integration Mode](https://github.com/airportyh/testem#continuous-integration-mode) and generate TAP file as test results.
+>Execute [testem](https://github.com/airportyh/testem) with [Continuous Integration Mode](https://github.com/airportyh/testem#continuous-integration-mode) then generate TAP file as test results.
 
 ## Getting Started
 This plugin requires Grunt `~0.4.0`

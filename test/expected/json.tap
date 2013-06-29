@@ -1,6 +1,5 @@
-TAP version 13
-ok 1 - test/source/testem.json - PhantomJS test module: hello test
-ok 2 - test/source/testem.json - PhantomJS test module2: hello test
+ok 1 - test/source/testem.json -  PhantomJS 1.7 - test module: hello test
+ok 2 - test/source/testem.json -  PhantomJS 1.7 - test module2: hello test
 
 1..2
 # tests 2
