@@ -1,16 +1,16 @@
-not ok 1 - test/source/failed-1.html -  PhantomJS 1.7 - test module: fail test
+not ok 1 - test/source/failed-1.html -  PhantomJS 1.9 - test module: fail test
     ---
         message: Will failed!
     ...
-not ok 2 - test/source/failed-1.html -  PhantomJS 1.7 - test module2: fail test
+not ok 2 - test/source/failed-1.html -  PhantomJS 1.9 - test module2: fail test
     ---
         message: Will failed!
     ...
-not ok 3 - test/source/failed-2.html -  PhantomJS 1.7 - test module: fail test
+not ok 3 - test/source/failed-2.html -  PhantomJS 1.9 - test module: fail test
     ---
         message: Will failed!
     ...
-not ok 4 - test/source/failed-2.html -  PhantomJS 1.7 - test module2: fail test
+not ok 4 - test/source/failed-2.html -  PhantomJS 1.9 - test module2: fail test
     ---
         message: Will failed!
     ...
