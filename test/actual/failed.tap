@@ -1,21 +1,9 @@
-not ok 1 - test/source/failed-1.html -  PhantomJS 1.9 - test module: fail test
-    ---
-        message: Will failed!
-    ...
-not ok 2 - test/source/failed-1.html -  PhantomJS 1.9 - test module2: fail test
-    ---
-        message: Will failed!
-    ...
-not ok 3 - test/source/failed-2.html -  PhantomJS 1.9 - test module: fail test
-    ---
-        message: Will failed!
-    ...
-not ok 4 - test/source/failed-2.html -  PhantomJS 1.9 - test module2: fail test
-    ---
-        message: Will failed!
-    ...
+PhantomJS 1.9 - test module: hello test
+PhantomJS 1.9 - test module2: hello test
+PhantomJS 1.9 - test module: hello test
+PhantomJS 1.9 - test module2: hello test
 
 1..4
 # tests 4
-# pass 0
-# fail 4
+# pass 4
+# fail 0

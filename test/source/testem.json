@@ -1,4 +1,4 @@
 {
   "launch_in_ci":["PhantomJS"],
-  "test_page":"test/source/success-1.html"
+  "test_page":"test/source/success-1.html#testem"
 }

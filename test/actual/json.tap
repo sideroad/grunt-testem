@@ -1,7 +1,6 @@
-ok 1 - test/source/testem.json -  PhantomJS 1.9 - test module: hello test
-ok 2 - test/source/testem.json -  PhantomJS 1.9 - test module2: hello test
+Error
 
-1..2
-# tests 2
-# pass 2
-# fail 0
+1..1
+# tests 1
+# pass 0
+# fail 1
