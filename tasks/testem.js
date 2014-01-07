@@ -45,7 +45,7 @@ module.exports = function(grunt) {
         var matches={};
         data = ''+data;
         matches.path = data.match(/^# Executing (.+)$/);
-        matches.fail = data.match(/^not ok (.+)/);
+        matches.fail = data.match(/^not ok ([\s\S]+)/);
         if(matches.path){
           grunt.log.writeln(matches.path[0]);
         }
