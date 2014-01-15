@@ -1,7 +1,9 @@
-PhantomJS 1.9 - test module: hello test
-PhantomJS 1.9 - test module2: hello test
-PhantomJS 1.9 - test module: hello test
-PhantomJS 1.9 - test module2: hello test
+# Using testem 0.6.2
+# Whole lists of tests
+ok PhantomJS 1.9 - test module: hello test
+ok PhantomJS 1.9 - test module2: hello test
+ok PhantomJS 1.9 - test module: hello test
+ok PhantomJS 1.9 - test module2: hello test
 
 1..4
 # tests 4
