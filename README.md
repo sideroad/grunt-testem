@@ -49,3 +49,22 @@ TAP file path
 ### Options
 See also [Configuration File](https://github.com/airportyh/testem#configuration-file)
 
+It also accepts an `output.coverage` option that is the folder path where coverage reports are written.
+
+```js
+grunt.initConfig({
+  'testem': {
+    options : {
+      output: {
+        coverage : 'coverage-results/'
+      }
+    },
+    main : {
+      src: [ 'examples/*.html' ],
+      dest: 'tests.tap'
+    }
+  }
+});
+```
+
+Source files must be instrumented before running tests. An example on how to do it in grunt is available inside `examples/coverage`.
