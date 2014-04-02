@@ -1,0 +1,18 @@
+{
+  "name": "grunt-testem-coverage-example",
+  "description": "A grunt plugin for testem using code coverage.",
+  "version": "0.0.0-whatever",
+  "homepage": "https://github.com/sideroad/grunt-testem",
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/sideroad/grunt-testem.git"
+  },
+  "dependencies": {
+    "async": "~0.1.22",
+    "underscore": "~1.4.2",
+    "testem-multi": "~0.3.1",
+    "grunt-contrib-clean": "~0.4.0",
+    "grunt": "~0.4.2",
+    "grunt-shell": "~0.6.4"
+  }
+}
