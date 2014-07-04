@@ -11,8 +11,7 @@ module.exports = function(grunt) {
   "use strict";
 
   var async = require('async'),
-      _ = require('underscore'),
-      fs = require('fs');
+      _ = require('underscore');
 
   grunt.registerMultiTask( 'testem', 'Execute testem.', function() {
     var done = this.async(),
@@ -21,7 +20,7 @@ module.exports = function(grunt) {
       files = [];
 
     if(options.json){
-      options = _.extend({}, JSON.parse( fs.readFileSync(options.json, 'utf-8').replace(/\n/,'')), options);
+      options = _.extend({}, grunt.file.readJSON(options.json), options);
     }
     grunt.log.writeln('Now testing...');
 
@@ -61,7 +60,7 @@ module.exports = function(grunt) {
             fail = memo.fail;
 
         if(tap){
-          fs.writeFileSync(tap, results, 'utf-8');
+          grunt.file.write(tap, results);
         }
         if( tests != pass ||
             fail ) {
