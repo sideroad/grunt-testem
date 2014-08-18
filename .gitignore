@@ -5,3 +5,4 @@ node_modules
 npm-debug.log
 examples/coverage/tmp
 examples/coverage/instrumented
+test/actual

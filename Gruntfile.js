@@ -31,6 +31,17 @@ module.exports = function(grunt) {
             'test/source/testem.json'
           ]
         }
+      },
+      bailOut: {
+        files : {
+          'test/actual/bailout.tap': [
+            'test/source/failed-*.html'
+          ]
+        },
+        options: {
+          force: true,
+          bailOut: true
+        }
       }
     },
 

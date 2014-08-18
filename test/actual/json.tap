@@ -1,9 +1,0 @@
-# Using testem 0.6.2
-# Whole lists of tests
-ok PhantomJS 1.9 - test module: hello test
-ok PhantomJS 1.9 - test module2: hello test
-
-1..2
-# tests 2
-# pass 2
-# fail 0
